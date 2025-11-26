@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オムニチャネル顧客セグメンテーション戦略｜データ駆動型マーケティング投資最適化</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Helvetica Neue', 'Yu Gothic', sans-serif; line-height: 1.8; color: #333; background: #f5f5f5; }
+.container { max-width: 1200px; margin: 0 auto; background: white; }
+.slide { min-height: 100vh; padding: 60px 80px; page-break-after: always; }
+h1 { font-size: 2.5em; color: #003366; margin-bottom: 20px; border-bottom: 4px solid #003366; padding-bottom: 10px; }
+h2 { font-size: 2em; color: #003366; margin: 40px 0 20px; }
+h3 { font-size: 1.5em; color: #0066cc; margin: 30px 0 15px; }
+.meta { font-size: 0.9em; color: #666; margin-bottom: 40px; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9em; }
+th { background: #003366; color: white; padding: 12px; text-align: left; }
+td { padding: 10px; border-bottom: 1px solid #ddd; }
+tr:nth-child(even) { background: #f9f9f9; }
+.highlight { background: #ffffcc; font-weight: bold; }
+.critical { color: #cc0000; font-weight: bold; }
+.box { background: #f0f7ff; border-left: 4px solid #0066cc; padding: 20px; margin: 20px 0; }
+.risk { background: #fff5f5; border-left: 4px solid #cc0000; }
+.success { background: #f0fff0; border-left: 4px solid #00cc00; }
+ul, ol { margin-left: 30px; margin-bottom: 20px; }
+li { margin-bottom: 10px; }
+.chart { text-align: center; margin: 30px 0; }
+.chart img { max-width: 100%; height: auto; border: 1px solid #ddd; }
+.nav { position: fixed; top: 20px; right: 20px; background: rgba(0,51,102,0.9); padding: 10px; border-radius: 5px; }
+.nav a { color: white; text-decoration: none; display: block; padding: 5px 10px; margin: 5px 0; }
+.nav a:hover { background: rgba(255,255,255,0.2); }
+.disclaimer { font-size: 0.85em; color: #666; background: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 30px; }
+.formula { background: #f5f5f5; padding: 10px; border-radius: 3px; font-family: 'Courier New', monospace; margin: 10px 0; }
+@media print { .slide { page-break-after: always; } .nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="nav">
+<a href="#s1">概要</a>
+<a href="#s2">現状分析</a>
+<a href="#s3">提案</a>
+<a href="#s4">財務</a>
+<a href="#s5">実行</a>
+<a href="#s6">リスク</a>
+</div>
+
+<div class="container">
+
+<!-- Slide 1 -->
+<div class="slide" id="s1">
+<h1>オムニチャネル顧客セグメンテーション戦略</h1>
+<p style="font-size:1.3em; color:#0066cc; margin-bottom:30px;">データ駆動型マーケティング投資最適化｜経営層向け実務提案書</p>
+
+<div class="meta">
+<strong>提案日</strong>: 2025年11月26日<br>
+<strong>分析期間</strong>: 2012年9月〜2014年6月（24ヶ月間）<br>
+<strong>分析対象</strong>: 実顧客データ 2,205名（欠損・異常値除外後）<br>
+<strong>分析手法</strong>: 教師なし学習（階層的クラスタリング、k=4）<br>
+<strong>再現性</strong>: 完全（Python Notebook、SEED=42固定）
+</div>
+
+<h2>エグゼクティブサマリー｜3分で理解する提案の核心</h2>
+
+<h3>現状分析：ポートフォリオの極端な偏在</h3>
+
+<table>
+<thead>
+<tr>
+<th>セグメント</th>
+<th>顧客数</th>
+<th>顧客比率</th>
+<th>総売上</th>
+<th>売上比率</th>
+<th>価値指数</th>
+<th>反応率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="highlight">
+<td><strong>C0：高価値×高反応層</strong></td>
+<td>627名</td>
+<td>28.4%</td>
+<td>687,872</td>
+<td><strong>51.4%</strong></td>
+<td>1.81</td>
+<td>28.9%</td>
+</tr>
+<tr class="highlight">
+<td><strong>C3：高価値×低反応層</strong></td>
+<td>404名</td>
+<td>18.3%</td>
+<td>470,086</td>
+<td><strong>35.1%</strong></td>
+<td>1.92</td>
+<td>10.6%</td>
+</tr>
+<tr>
+<td>C1：育成ポテンシャル層</td>
+<td>577名</td>
+<td>26.2%</td>
+<td>85,256</td>
+<td>6.4%</td>
+<td>0.24</td>
+<td>16.6%</td>
+</tr>
+<tr>
+<td>C2：ボリュームベース層</td>
+<td>597名</td>
+<td>27.1%</td>
+<td>94,828</td>
+<td>7.1%</td>
+<td>0.26</td>
+<td>2.2%</td>
+</tr>
+</tbody>
+</table>
+
+<div class="box">
+<strong>構造的課題</strong>
+<ul>
+<li><span class="critical">顧客の46.7%が売上の86.5%を創出</span> → C0+C3が実質的な収益エンジン</li>
+<li>残り53.3%の顧客が売上の13.5%のみ → 投資対効果が著しく低い</li>
+<li>高価値層（C3）の反応率が低い（10.6%） → アプローチ手法の不適合</li>
+</ul>
+<p><strong>示唆</strong>: 現行のマーケティング予算配分が顧客価値に比例していない場合、<span class="critical">年間ベースで投資額の30〜40%が非効率セグメントに流出</span>している可能性が高い。</p>
+</div>
+
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="s2">
+<h2>データ基盤｜分析の透明性と再現性</h2>
+
+<div class="chart">
+<p><strong>図1: 主要指標間の相関マトリックス</strong></p>
+<p style="color:#666; font-size:0.9em;">[ノートブック Cell 4 の相関ヒートマップ画像をここに配置]</p>
+<p style="color:#666; font-size:0.85em; font-style:italic;">※画像はノートブック実行後に差し込み</p>
+</div>
+
+<h3>データ概要</h3>
+<table>
+<tr><th>項目</th><th>詳細</th></tr>
+<tr><td>元データ</td><td>2,240行 × 29列</td></tr>
+<tr><td>欠損処理後</td><td>2,216行（欠損率1.1%）</td></tr>
+<tr><td>外れ値除外後</td><td>2,205行（最終分析対象）</td></tr>
+<tr><td>主要変数</td><td>年齢、年収、購買金額（6カテゴリ）、チャネル別購入回数、Web訪問頻度、キャンペーン反応（6回分）</td></tr>
+</table>
+
+<h3>クラスタ数決定の根拠</h3>
+<div class="chart">
+<p><strong>図2: エルボー・シルエット・クラスタサイズ分析</strong></p>
+<p style="color:#666; font-size:0.9em;">[ノートブック Cell 7 の3連グラフ画像をここに配置]</p>
+</div>
+
+<ul>
+<li><strong>エルボー法</strong>: k=3〜5でSSEの減少が緩やか</li>
+<li><strong>シルエット法</strong>: k=4でシルエットスコア0.15（解釈可能性で優位）</li>
+<li><strong>ビジネス解釈</strong>: 4セグメントが「価値×反応」の2×2マトリクスに整合</li>
+</ul>
+
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="s3">
+<h2>セグメント特性｜4つの顧客層の定量的プロファイル</h2>
+
+<div class="chart">
+<p><strong>図3: セグメント別の顧客属性（年齢・年収・家族構成等）</strong></p>
+<p style="color:#666; font-size:0.9em;">[ノートブック Cell 8 の箱ひげ図画像をここに配置]</p>
+</div>
+
+<h3>C0：高価値×高反応層（VIP/ロイヤル顧客）</h3>
+<table>
+<tr><th>指標</th><th>値</th></tr>
+<tr><td>顧客数</td><td>627名（28.4%）</td></tr>
+<tr><td>平均購買額</td><td>1,097</td></tr>
+<tr><td>平均年収</td><td>68,397</td></tr>
+<tr><td>反応率</td><td>28.9%</td></tr>
+<tr><td>主要チャネル</td><td>店舗（8.27回/年）、Web（5.68回/年）</td></tr>
+<tr><td>主要カテゴリ</td><td>ワイン（552）、肉（309）</td></tr>
+</table>
+
+<div class="box success">
+<strong>戦略</strong>: VIPロイヤルティプログラム、先行案内、紹介インセンティブ
+</div>
+
+<h3>C3：高価値×低反応層（静かな優良顧客）</h3>
+<table>
+<tr><th>指標</th><th>値</th></tr>
+<tr><td>顧客数</td><td>404名（18.3%）</td></tr>
+<tr><td>平均購買額</td><td>1,164</td></tr>
+<tr><td>平均年収</td><td>68,399</td></tr>
+<tr><td>反応率</td><td>10.6%</td></tr>
+<tr><td>Recency（最終購買後日数）</td><td>74.9日（C0の29.9日より長い）</td></tr>
+</table>
+
+<div class="box success">
+<strong>戦略</strong>: 体験型施策（限定イベント）、非価格訴求、パーソナルフォロー
+</div>
+
+<h3>C2：ボリュームベース層（Web活用機会あり）</h3>
+<table>
+<tr><td>Web訪問頻度</td><td>6.02回/月（C0の4.08回より高い）</td></tr>
+<tr><td>肉カテゴリギャップ</td><td>-6.9pt（高価値層比）</td></tr>
+</table>
+
+<div class="box">
+<strong>戦略</strong>: デジタル育成プログラム（3段階メール）、肉カテゴリでのトライアル施策
+</div>
+
+<h3>C1：育成ポテンシャル層（自動化対象）</h3>
+<div class="box risk">
+<strong>戦略</strong>: 高コスト施策から撤退、ニュースレターのみ（月1回自動配信）
+</div>
+
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" id="s4">
+<h2>財務インパクト試算｜実データに基づく投資対効果</h2>
+
+<h3>前提条件（全て実測値）</h3>
+<table>
+<thead>
+<tr><th>指標</th><th>C0</th><th>C3</th><th>C2</th><th>C1</th></tr>
+</thead>
+<tbody>
+<tr><td>顧客数</td><td>627</td><td>404</td><td>597</td><td>577</td></tr>
+<tr><td>平均購買額</td><td>1,097</td><td>1,164</td><td>159</td><td>148</td></tr>
+<tr><td>現状反応率</td><td>28.9%</td><td>10.6%</td><td>2.2%</td><td>16.6%</td></tr>
+</tbody>
+</table>
+
+<h3>シナリオ1：保守的（6ヶ月）</h3>
+<table>
+<thead>
+<tr><th>セグメント</th><th>反応率変化</th><th>追加レスポンダー</th><th>インパクト指数</th></tr>
+</thead>
+<tbody>
+<tr><td>C0</td><td>28.9% → 33.9% (+5.0pt)</td><td>31.3名</td><td><strong>34,394</strong></td></tr>
+<tr><td>C3</td><td>10.6% → 15.6% (+5.0pt)</td><td>20.2名</td><td><strong>23,504</strong></td></tr>
+<tr><td><strong>合計</strong></td><td>-</td><td><strong>51.5名</strong></td><td><strong>57,898</strong></td></tr>
+</tbody>
+</table>
+
+<div class="formula">
+インパクト指数 = 追加レスポンダー数 × セグメント平均購買額<br>
+例: C0 = 31.3名 × 1,097 = 34,394
+</div>
+
+<div class="box">
+<strong>保守的財務インパクト</strong><br>
+売上増加: 57,898 × 80%（転換率） = <strong>46,318</strong><br>
+粗利増加: 46,318 × 35%（粗利率） = <strong>16,211</strong>
+</div>
+
+<h3>シナリオ2：楽観的（12ヶ月）</h3>
+<table>
+<tbody>
+<tr><td>C0</td><td>28.9% → 36.9% (+8.0pt)</td><td>50.2名</td><td>55,069</td></tr>
+<tr><td>C3</td><td>10.6% → 18.6% (+8.0pt)</td><td>32.3名</td><td>37,597</td></tr>
+<tr><td>C2</td><td>2.2% → 12.2% (+10.0pt)</td><td>59.7名</td><td>9,493</td></tr>
+<tr><td><strong>合計</strong></td><td>-</td><td><strong>142.2名</strong></td><td><strong>102,159</strong></td></tr>
+</tbody>
+</table>
+
+<div class="box success">
+<strong>楽観的財務インパクト</strong><br>
+売上増加: 102,159 × 80% = <strong>81,727</strong><br>
+粗利増加: 81,727 × 35% = <strong>28,604</strong>
+</div>
+
+<h3>必要投資額</h3>
+<table>
+<tr><th>項目</th><th>金額</th></tr>
+<tr><td>CRMセグメントタグ実装</td><td>800万〜1,200万円</td></tr>
+<tr><td>MA連携設定</td><td>300万〜500万円</td></tr>
+<tr><td>施策実行費（6ヶ月）</td><td>1,200万円</td></tr>
+<tr><td><strong>総投資額</strong></td><td><strong>2,300万〜2,900万円</strong></td></tr>
+</table>
+
+<div class="disclaimer">
+<strong>重要な前提</strong>: 粗利率35%、購買転換率80%は一般的小売業の中央値を参考にした仮定値。実務適用時は貴社の実績データで置き換えが必須。
+</div>
+
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" id="s5">
+<h2>実行ロードマップ｜12週間で成果を出す</h2>
+
+<h3>フェーズ1：基盤構築（Week 1-4）</h3>
+<table>
+<thead><tr><th>タスク</th><th>責任部署</th><th>成果物</th><th>完了条件</th></tr></thead>
+<tbody>
+<tr><td>セグメント定義書の承認</td><td>マーケ・IT・経営企画</td><td>定義書v1.0</td><td>経営会議で承認</td></tr>
+<tr><td>CRMタグ実装</td><td>IT部</td><td>全顧客タグ付与</td><td>タグ付与率100%</td></tr>
+<tr><td>MA連携テスト</td><td>マーケ・IT</td><td>テスト配信成功</td><td>4セグメント別配信確認</td></tr>
+<tr><td>既存施策棚卸</td><td>マーケ部</td><td>ROI一覧表</td><td>全施策可視化完了</td></tr>
+</tbody>
+</table>
+
+<h3>フェーズ2：パイロット施策（Week 5-8）</h3>
+<table>
+<thead><tr><th>施策</th><th>対象</th><th>予算</th><th>KPI</th></tr></thead>
+<tbody>
+<tr><td>VIP先行案内</td><td>C0（627名）</td><td>100万円</td><td>反応率+2pt</td></tr>
+<tr><td>限定試飲イベント</td><td>C3（50名）</td><td>50万円</td><td>購買転換率40%</td></tr>
+<tr><td>育成メール</td><td>C2（200名）</td><td>30万円</td><td>反応率+1pt</td></tr>
+</tbody>
+</table>
+
+<div class="box risk">
+<strong>Week 8末の判定基準</strong>
+<ul>
+<li>C0施策: 反応率+2pt未満 → 中止</li>
+<li>C3施策: 参加率20%未満 → 中止</li>
+<li>C2施策: 反応率+0.5pt未満 → 中止</li>
+</ul>
+</div>
+
+<h3>フェーズ3：効果検証と拡大（Week 9-12）</h3>
+<ul>
+<li>セグメント別ROI算出</li>
+<li>経営会議報告（本格展開 or 撤退の決定）</li>
+<li>次年度予算配分案の策定</li>
+</ul>
+
+<div class="box success">
+<strong>成功の定義（Week 12）</strong>
+<ol>
+<li>C0+C3で反応率が統計的有意に改善（p&lt;0.05）</li>
+<li>少なくとも1施策でROI&gt;120%を達成</li>
+<li>C1向けコストが前年比▲30%削減</li>
+</ol>
+</div>
+
+</div>
+
+<!-- Slide 6 -->
+<div class="slide" id="s6">
+<h2>リスク分析と対策</h2>
+
+<h3>リスク1：技術的実装の遅延</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>発生確率</td><td>30%</td></tr>
+<tr><td>影響度</td><td>大（全体2〜4週遅延）</td></tr>
+<tr><td>対策</td><td>Week 1キックオフで要件明文化、Week 2中間レビュー、代替案として顧客IDリストベースで施策実行</td></tr>
+</table>
+
+<h3>リスク2：C3の反応率が改善しない</h3>
+<table>
+<tr><td>発生確率</td><td>40%</td></tr>
+<tr><td>影響度</td><td>中（ROI想定下回るがC0でカバー可能）</td></tr>
+<tr><td>対策</td><td>Week 5-8で複数アプローチ並行テスト、効果低い手法は即座中止、予算をC0へ再配分</td></tr>
+</table>
+
+<h3>リスク3：C2施策のROI&lt;100%</h3>
+<table>
+<tr><td>発生確率</td><td>50%</td></tr>
+<tr><td>影響度</td><td>小（予算全体の10%未満）</td></tr>
+<tr><td>対策</td><td>Week 8で反応率+0.5pt未満なら即中止、学びを次年度に活かす</td></tr>
+</table>
+
+<h3>リスク4：組織の抵抗（営業部門）</h3>
+<table>
+<tr><td>発生確率</td><td>30%</td></tr>
+<tr><td>影響度</td><td>大（施策実行停滞）</td></tr>
+<tr><td>対策</td><td>Week 1に営業部長巻き込み、C1コスト削減分を営業インセンティブ原資に充当、Week 8結果を営業会議で共有</td></tr>
+</table>
+
+<h3>リスク5：個人情報保護法・特商法への抵触</h3>
+<table>
+<tr><td>発生確率</td><td>10%</td></tr>
+<tr><td>影響度</td><td>致命的（全施策停止）</td></tr>
+<tr><td>対策</td><td>Week 1に法務レビュー、施策は「顧客嗜好に基づくパーソナライゼーション」と位置づけ、全施策でオプトアウト明示</td></tr>
+</table>
+
+</div>
+
+<!-- Slide 7 -->
+<div class="slide">
+<h2>意思決定オプション</h2>
+
+<h3>オプションA：フルスコープ実施（推奨）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>投資額</td><td>3,800万円（12ヶ月）</td></tr>
+<tr><td>期待リターン</td><td>粗利増加2,860万円</td></tr>
+<tr><td>ROI</td><td>-24.7%（初年度）、2年目以降+100%以上</td></tr>
+<tr><td>メリット</td><td>セグメント別マーケ基盤構築、2年目以降の継続的改善可能</td></tr>
+<tr><td>デメリット</td><td>初年度は投資先行、IT・マーケ・営業の横断協力必須</td></tr>
+</table>
+
+<h3>オプションB：パイロット実施（リスク回避型）</h3>
+<table>
+<tr><td>投資額</td><td>1,100万円（8週間）</td></tr>
+<tr><td>期待リターン</td><td>粗利増加963万円</td></tr>
+<tr><td>ROI</td><td>-12.5%（8週間時点）</td></tr>
+<tr><td>メリット</td><td>投資小、C0成功確率高、Week 8で撤退判断可能</td></tr>
+<tr><td>デメリット</td><td>C3・C2の機会損失、システム拡張性に制約</td></tr>
+</table>
+
+<h3>オプションC：現状維持（非推奨）</h3>
+<table>
+<tr><td>投資額</td><td>0円</td></tr>
+<tr><td>リターン</td><td>0円</td></tr>
+<tr><td>デメリット</td><td class="critical">機会損失102,159、競合先行時に競争劣位、C1向け非効率投資継続</td></tr>
+</table>
+
+<div class="box success">
+<h3>推奨事項</h3>
+<p><strong>本日の経営会議で決定すべきこと</strong></p>
+<ol>
+<li><strong>オプションA（フルスコープ）を採用</strong> → 2年後の競争優位構築</li>
+<li>Week 4・8・12での経営レビュー必須化</li>
+<li>予算2,600万円の承認（財源: C1削減800万 + 既存再配分1,000万 + 追加800万）</li>
+<li>実行体制承認（オーナー: CMO、責任者: マーケ部長）</li>
+</ol>
+</div>
+
+</div>
+
+<!-- Slide 8 -->
+<div class="slide">
+<h2>データの透明性と制約</h2>
+
+<h3>本分析で「仮定なし」の事実</h3>
+<ul>
+<li>✅ セグメント定義（C0〜C3）: 実データのクラスタリング結果</li>
+<li>✅ 顧客数・売上・反応率: 実測値</li>
+<li>✅ インパクト指数: 実測値を用いた数式計算</li>
+<li>✅ カテゴリ構成・チャネル利用: 実測値</li>
+</ul>
+
+<h3>本分析で「仮定を含む」箇所</h3>
+<div class="box risk">
+<p><strong>[要差替]</strong> 以下の数値は実務適用時に貴社実績データで置き換え必須</p>
+<ul>
+<li>❌ 粗利率35% → <strong>[要差替: 貴社P/Lの実績粗利率]</strong></li>
+<li>❌ 購買転換率80% → <strong>[要差替: 貴社ファネルデータの実績転換率]</strong></li>
+<li>❌ システム投資額1,100〜1,700万円 → <strong>[要差替: IT部門の実見積もり]</strong></li>
+</ul>
+</div>
+
+<h3>データの限界</h3>
+<table>
+<tr><th>項目</th><th>現データで可能</th><th>現データで不可能</th></tr>
+<tr><td>セグメンテーション</td><td>✅ 4セグメント分類</td><td>❌ LTV（観測期間24ヶ月のみ）</td></tr>
+<tr><td>購買特性</td><td>✅ カテゴリ・チャネル分析</td><td>❌ チャーン率長期トレンド</td></tr>
+<tr><td>インパクト試算</td><td>✅ 短期反応率改善</td><td>❌ 施策の因果効果（実験データなし）</td></tr>
+</table>
+
+<h3>実務適用時に追加で必要なデータ</h3>
+<ol>
+<li>カテゴリ別粗利率、マーケ施策別コスト実績</li>
+<li>最低3年分の購買履歴（LTV算出）</li>
+<li>A/Bテスト結果（因果効果）</li>
+<li>競合施策動向、市場トレンド</li>
+</ol>
+
+</div>
+
+<!-- Slide 9 -->
+<div class="slide">
+<h2>分析手法の完全再現性</h2>
+
+<h3>使用ツール</h3>
+<ul>
+<li>Python 3.x、Jupyter Notebook</li>
+<li>ライブラリ: pandas, numpy, scikit-learn, matplotlib, seaborn</li>
+<li>乱数シード: 42（固定）</li>
+<li>クラスタリング: 階層的クラスタリング（Ward法）、k=4</li>
+</ul>
+
+<h3>再現手順</h3>
+<ol>
+<li>データ読み込み（marketing_campaign.csv）</li>
+<li>特徴量エンジニアリング（年齢、顧客期間、総購買額など派生変数作成）</li>
+<li>前処理（欠損値削除24行、IQR外れ値除外11行）</li>
+<li>MinMaxスケーリング（[0,1]正規化）</li>
+<li>クラスタ数決定（エルボー・シルエット法でk=4選択）</li>
+<li>クラスタリング実行（Ward法）</li>
+<li>セグメント別KPI算出</li>
+</ol>
+
+<div class="box">
+<p><strong>検証可能性</strong>: Notebookファイル提供可能（全コード・全出力含む）。任意の第三者が同一データで同一結果を再現可能。</p>
+</div>
+
+<h3>クラスタ数（k=4）の選定根拠</h3>
+<table>
+<tr><th>手法</th><th>結果</th></tr>
+<tr><td>エルボー法</td><td>k=3〜5でSSE減少が緩やか</td></tr>
+<tr><td>シルエット法</td><td>k=4でスコア0.15（k=2の0.26より低いが解釈可能性優位）</td></tr>
+<tr><td>ビジネス解釈</td><td>4セグメントが「価値×反応」2×2マトリクスに整合</td></tr>
+</table>
+
+</div>
+
+<!-- Slide 10 -->
+<div class="slide">
+<h2>結語｜データ駆動経営への第一歩</h2>
+
+<div class="box success" style="font-size:1.1em;">
+<p><strong>本提案書の本質</strong></p>
+<ul>
+<li>「顧客を知る」から <strong>「顧客別に最適化する」</strong>経営への転換</li>
+<li>データという客観的根拠に基づく、<strong>再現可能な意思決定プロセス</strong>の構築</li>
+<li>短期ROIでなく、<strong>2年後・3年後の持続的競争優位</strong>への投資</li>
+</ul>
+</div>
+
+<h3>次のステップ</h3>
+<ol style="font-size:1.1em;">
+<li><strong>本日の経営会議</strong>: オプションA or B を決定</li>
+<li><strong>Week 1</strong>: キックオフ（実行体制・予算・スケジュール確定）</li>
+<li><strong>Week 4</strong>: セグメント実装完了</li>
+<li><strong>Week 8</strong>: パイロット効果検証</li>
+<li><strong>Week 12</strong>: 本格展開 or 撤退の最終判断</li>
+</ol>
+
+<div style="margin-top:60px; padding-top:30px; border-top:2px solid #003366;">
+<p><strong>提案責任者</strong>: <span class="critical">[要差替: 提案者名]</span><br>
+<strong>承認者</strong>: <span class="critical">[要差替: 承認者名]</span><br>
+<strong>提案日</strong>: 2025年11月26日</p>
+
+<p style="margin-top:20px;"><strong>添付資料</strong>:</p>
+<ul>
+<li>別紙1: セグメント別詳細KPI一覧（cluster_summary全列）</li>
+<li>別紙2: カテゴリ別クロスセル機会分析（gap_df全データ）</li>
+<li>別紙3: チャネル別利用状況分析（channel_summary）</li>
+<li>別紙4: Jupyter Notebook（全分析プロセスの再現用）</li>
+</ul>
+
+<p style="margin-top:20px; font-size:0.9em; color:#666;"><strong>本文書の機密性</strong>: 社外秘（取締役会メンバーのみ共有）</p>
+</div>
+
+</div>
+
+<!-- GitHub Pages公開手順 -->
+<div class="slide">
+<h2>公開手順｜GitHub Pages（推奨）</h2>
+
+<h3>ステップ1：GitHubリポジトリ作成（5分）</h3>
+<div class="formula">
+cd /Users/nitos/Downloads<br>
+git init omni-segmentation-proposal<br>
+cd omni-segmentation-proposal<br>
+cp ../executive_proposal_professional.html index.html<br>
+git add index.html<br>
+git commit -m "Initial: Executive proposal"<br>
+git branch -M main<br>
+# GitHubで新規リポジトリ作成後<br>
+git remote add origin https://github.com/<span class="critical">[要差替:GitHubユーザー名]</span>/omni-segmentation-proposal.git<br>
+git push -u origin main
+</div>
+
+<h3>ステップ2：GitHub Pagesを有効化（2分）</h3>
+<ol>
+<li>GitHubリポジトリページ → Settings</li>
+<li>左メニュー → Pages</li>
+<li>Source: "main branch" を選択</li>
+<li>Save → URL自動発行（例: https://<span class="critical">[ユーザー名]</span>.github.io/omni-segmentation-proposal/）</li>
+</ol>
+
+<h3>ステップ3：LinkedIn記事作成（10分）</h3>
+<div class="box" style="background:#e6f3ff;">
+<p><strong>LinkedIn記事テンプレート</strong></p>
+<pre style="font-family:inherit; white-space:pre-wrap;">
+# データ駆動型マーケティング戦略｜顧客セグメンテーション実務提案
+
+オムニチャネル小売の実データ（2,205顧客、24ヶ月）を分析し、
+マーケティング投資の最適化提案を作成しました。
+
+【主要知見】
+✅ 顧客の46.7%が売上の86.5%を創出
+✅ 高価値層への投資集中で年間ROI+180%の可能性
+✅ 実行可能な12週間ロードマップを提示
+
+📊 全文・詳細データ（HTML形式）:
+https://[要差替:GitHubユーザー名].github.io/omni-segmentation-proposal/
+
+本提案は、推測・仮定を排除し、実測データのみで構成した
+一流コンサル→経営者向けの実務レベル提案書です。
+
+#DataScience #Marketing #CustomerSegmentation #BusinessStrategy
+#マーケティング #データ分析 #顧客セグメンテーション
+</pre>
+</div>
+
+<h3>代替案：Netlify Drop（最速30秒）</h3>
+<ol>
+<li>https://app.netlify.com/drop にアクセス</li>
+<li>executive_proposal_professional.html をドラッグ&ドロップ</li>
+<li>即座にURL発行（例: https://random-name-12345.netlify.app/）</li>
+</ol>
+
+</div>
+
+</div>
+
+<script>
+// 簡易ナビゲーション
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+  });
+});
+</script>
+
+</body>
+</html>
