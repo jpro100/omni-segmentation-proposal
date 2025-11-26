@@ -1,0 +1,42 @@
+/* Slide 2 専用（他スライド非干渉） */
+.s2 { margin-top: 2rem; }                 /* 前スライドとの空白を抑制 */
+.s2 h2 { margin: 0 0 1.2rem 0; }
+.s2 h3 { margin: 1.8rem 0 0.8rem; }
+
+/* 画像：横幅を抑えて中央寄せ */
+.s2 .viz { max-width: 980px; margin: 1rem auto; }
+.s2 .viz img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+.s2 .viz figcaption {
+  color: #555;
+  font-size: .9rem;
+  margin-top: .5rem;
+  text-align: center;
+}
+.s2 .viz .note { color: #8a8a8a; font-style: italic; margin-left: .3rem; }
+
+/* テーブル */
+.s2 .table-wrap { overflow-x: auto; margin: 1rem 0; }
+.s2 table.kv { width: 100%; border-collapse: collapse; max-width: 980px; margin: 0 auto; }
+.s2 table.kv th, .s2 table.kv td {
+  padding: .7rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+.s2 table.kv thead th { background: #0f2b57; color: #fff; font-weight: 600; }
+.s2 table.kv tbody th { background: #f8fafc; width: 18%; font-weight: 600; }
+
+/* 箇条書き */
+.s2 .bullets { max-width: 980px; margin: .8rem auto 0; padding-left: 1.2rem; }
+.s2 .bullets li { margin: .35rem 0; }
+
+/* モバイル微調整 */
+@media (max-width: 640px){
+  .s2 { margin-top: 1rem; }
+  .s2 .viz { margin: .8rem auto; }
+}

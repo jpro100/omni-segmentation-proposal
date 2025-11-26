@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>オムニチャネル顧客セグメンテーション戦略｜データ駆動型マーケティング投資最適化</title>
+<!--
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Helvetica Neue', 'Yu Gothic', sans-serif; line-height: 1.8; color: #333; background: #f5f5f5; }
@@ -33,6 +34,9 @@ li { margin-bottom: 10px; }
 .formula { background: #f5f5f5; padding: 10px; border-radius: 3px; font-family: 'Courier New', monospace; margin: 10px 0; }
 @media print { .slide { page-break-after: always; } .nav { display: none; } }
 </style>
+-->
+    <link rel="stylesheet" href="assets/css/base.css?v=1">
+    <link rel="stylesheet" href="assets/css/slide2.css?v=2">
 </head>
 <body>
 
@@ -163,30 +167,19 @@ li { margin-bottom: 10px; }
 </div>
 -->
 
-      <!-- Slide 2 — データ基盤 / 透明性と再現性 -->
+      <!-- Slide 2 — データ基盤 / 透明性と再現性（最小変更・他スライド非干渉） -->
       <div class="slide s2" id="s2" role="region" aria-labelledby="s2-title">
         <h2 id="s2-title">データ基盤｜分析の透明性と再現性</h2>
         
         <!-- 図1: 相関ヒートマップ -->
-        <div class="chart">
-          <figure class="figure">
-            <img
-            src="assets/img/fig_01_corr_matrix.jpg"
-            alt="主要数値指標間の相関マトリックス（相関ヒートマップ）"
-            loading="lazy"
-            width="1400"
-            height="980"
-            style="width:100%;height:auto;display:block"
-            />
-            <figcaption class="caption">
-            <strong>図1.</strong> 主要指標間の相関マトリックス
-            <span class="note">（ノートブック Cell 4 で生成した画像を差し込み）</span>
-            </figcaption>
-            <noscript>相関ヒートマップ画像（fig_01_corr_matrix.png）</noscript>
-          </figure>
-        </div>
+        <figure class="viz">
+          <img src="assets/img/fig_01_corr_matrix.jpg"
+          alt="主要指標間の相関マトリクス（相関ヒートマップ）">
+          <figcaption>図1. 主要指標間の相関マトリクス
+          <span class="note">（ノートブック Cell 4 で生成した画像を差し込み）</span>
+          </figcaption>
+        </figure>
         
-        <!-- データ概要 -->
         <h3>データ概要</h3>
         <div class="table-wrap" role="group" aria-label="データ概要テーブル">
           <table class="kv">
@@ -197,30 +190,20 @@ li { margin-bottom: 10px; }
             <tr><th scope="row">元データ</th><td>2,240行 × 29列</td></tr>
             <tr><th scope="row">欠損処理後</th><td>2,216行（欠損率1.1%）</td></tr>
             <tr><th scope="row">外れ値除外後</th><td>2,205行（最終分析対象）</td></tr>
-            <tr><th scope="row">主要変数</th><td>年齢、年収、購買金額（6カテゴリ）、チャネル別購入回数、Web訪問頻度、キャンペーン反応（6回分）</td></tr>
+            <tr><th scope="row">主要変数</th>
+            <td>年齢、年収、購買金額（6カテゴリ）、チャネル別購入回数、Web訪問頻度、キャンペーン反応（6回分）</td></tr>
             </tbody>
           </table>
         </div>
         
-        <!-- 図2: k選定の根拠（3連グラフ） -->
         <h3>クラスタ数決定の根拠</h3>
-        <div class="chart">
-          <figure class="figure">
-            <img
-            src="assets/img/fig_02_k_selection.jpg"
-            alt="k選定の根拠：エルボー曲線・シルエットスコア・クラスタサイズ分布（3連グラフ）"
-            loading="lazy"
-            width="1600"
-            height="900"
-            style="width:100%;height:auto;display:block"
-            />
-            <figcaption class="caption">
-            <strong>図2.</strong> エルボー・シルエット・クラスタサイズ分析
-            <span class="note">（ノートブック Cell 7 で生成した画像を差し込み）</span>
-            </figcaption>
-            <noscript>k選定3連グラフ画像（fig_02_k_selection.png）</noscript>
-          </figure>
-        </div>
+        <figure class="viz">
+          <img src="assets/img/fig_02_k_selection.jpg"
+          alt="k 選定の根拠：エルボー・シルエット・クラスタサイズ分布（3連グラフ）">
+          <figcaption>図2. エルボー・シルエット・クラスタサイズ分析
+          <span class="note">（ノートブック Cell 7 で生成した画像を差し込み）</span>
+          </figcaption>
+        </figure>
         
         <ul class="bullets">
           <li><strong>エルボー法:</strong> k=3〜5 で SSE の減少が緩やかに遷移。</li>
@@ -229,18 +212,36 @@ li { margin-bottom: 10px; }
         </ul>
       </div>
       
-      <!-- Slide 2 内だけの軽量スタイル（他と衝突しないよう .s2 でスコープ） -->
+      <!-- Slide 2 専用のスコープドCSS（他スライドに影響しません） -->
       <style>
-        .s2 .caption{color:#555;font-size:.9rem;margin-top:.5rem}
-        .s2 .caption .note{color:#888;font-style:italic;margin-left:.3rem}
-        .s2 .table-wrap{overflow-x:auto;margin:1rem 0}
-        .s2 table.kv{width:100%;border-collapse:collapse}
-        .s2 table.kv th,.s2 table.kv td{padding:.8rem 1rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
-        .s2 table.kv thead th{background:#0f2b57;color:#fff;font-weight:600}
-        .s2 table.kv tbody th{background:#f8fafc;width:18%;font-weight:600}
-        .s2 .bullets{margin:.8rem 0 0 1rem}
-        .s2 .bullets li{margin:.35rem 0}
-      </style>
+        .s2{margin-top:2rem;}                 /* 前スライドとの過剰な空白を抑制 */
+        .s2 h2{margin:0 0 1.2rem 0;}
+        .s2 h3{margin:1.8rem 0 0.8rem;}
+        
+        /* 画像まわり：横幅を抑えて中央寄せ、にじみ防止の枠線つき */
+        .s2 .viz{max-width:980px;margin:1rem auto;}
+        .s2 .viz img{display:block;width:100%;height:auto;
+          border:1px solid #e5e7eb;border-radius:6px}
+          
+        .s2 .viz figcaption{color:#555;font-size:.9rem;margin-top:.5rem;text-align:center}
+        .s2 .viz .note{color:#8a8a8a;font-style:italic;margin-left:.3rem}
+              
+        /* テーブル（既存体裁を崩さず読みやすく） */
+              .s2 .table-wrap{overflow-x:auto;margin:1rem 0}
+                .s2 table.kv{width:100%;border-collapse:collapse;max-width:980px;margin:0 auto}
+                  .s2 table.kv th,.s2 table.kv td{
+                    padding:.7rem 1rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+                    .s2 table.kv thead th{background:#0f2b57;color:#fff;font-weight:600}
+                      .s2 table.kv tbody th{background:#f8fafc;width:18%;font-weight:600}
+                        
+                        .s2 .bullets{max-width:980px;margin:.8rem auto 0;padding-left:1.2rem}
+                          .s2 .bullets li{margin:.35rem 0}
+                            /* モバイルでの余白最適化 */
+                            @media (max-width: 640px){
+                              .s2{margin-top:1rem}
+                                .s2 .viz{margin:.8rem auto}
+                                }
+                              </style>
 
 <!-- Slide 3 -->
 <div class="slide" id="s3">
