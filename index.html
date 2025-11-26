@@ -129,6 +129,7 @@ li { margin-bottom: 10px; }
 </div>
 
 <!-- Slide 2 -->
+<!--
 <div class="slide" id="s2">
 <h2>データ基盤｜分析の透明性と再現性</h2>
 
@@ -160,6 +161,86 @@ li { margin-bottom: 10px; }
 </ul>
 
 </div>
+-->
+
+      <!-- Slide 2 — データ基盤 / 透明性と再現性 -->
+      <div class="slide s2" id="s2" role="region" aria-labelledby="s2-title">
+        <h2 id="s2-title">データ基盤｜分析の透明性と再現性</h2>
+        
+        <!-- 図1: 相関ヒートマップ -->
+        <div class="chart">
+          <figure class="figure">
+            <img
+            src="assets/img/fig_01_corr_matrix.png"
+            alt="主要数値指標間の相関マトリックス（相関ヒートマップ）"
+            loading="lazy"
+            width="1400"
+            height="980"
+            style="width:100%;height:auto;display:block"
+            />
+            <figcaption class="caption">
+            <strong>図1.</strong> 主要指標間の相関マトリックス
+            <span class="note">（ノートブック Cell 4 で生成した画像を差し込み）</span>
+            </figcaption>
+            <noscript>相関ヒートマップ画像（fig_01_corr_matrix.png）</noscript>
+          </figure>
+        </div>
+        
+        <!-- データ概要 -->
+        <h3>データ概要</h3>
+        <div class="table-wrap" role="group" aria-label="データ概要テーブル">
+          <table class="kv">
+            <thead>
+            <tr><th scope="col">項目</th><th scope="col">詳細</th></tr>
+            </thead>
+            <tbody>
+            <tr><th scope="row">元データ</th><td>2,240行 × 29列</td></tr>
+            <tr><th scope="row">欠損処理後</th><td>2,216行（欠損率1.1%）</td></tr>
+            <tr><th scope="row">外れ値除外後</th><td>2,205行（最終分析対象）</td></tr>
+            <tr><th scope="row">主要変数</th><td>年齢、年収、購買金額（6カテゴリ）、チャネル別購入回数、Web訪問頻度、キャンペーン反応（6回分）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- 図2: k選定の根拠（3連グラフ） -->
+        <h3>クラスタ数決定の根拠</h3>
+        <div class="chart">
+          <figure class="figure">
+            <img
+            src="assets/img/fig_02_k_selection.png"
+            alt="k選定の根拠：エルボー曲線・シルエットスコア・クラスタサイズ分布（3連グラフ）"
+            loading="lazy"
+            width="1600"
+            height="900"
+            style="width:100%;height:auto;display:block"
+            />
+            <figcaption class="caption">
+            <strong>図2.</strong> エルボー・シルエット・クラスタサイズ分析
+            <span class="note">（ノートブック Cell 7 で生成した画像を差し込み）</span>
+            </figcaption>
+            <noscript>k選定3連グラフ画像（fig_02_k_selection.png）</noscript>
+          </figure>
+        </div>
+        
+        <ul class="bullets">
+          <li><strong>エルボー法:</strong> k=3〜5 で SSE の減少が緩やかに遷移。</li>
+          <li><strong>シルエット法:</strong> k=4 でスコア 0.15 前後とバランスが良好。</li>
+          <li><strong>ビジネス解釈:</strong> 4 セグメントが「価値 × 反応」の 2×2 マトリクスに整合。</li>
+        </ul>
+      </div>
+      
+      <!-- Slide 2 内だけの軽量スタイル（他と衝突しないよう .s2 でスコープ） -->
+      <style>
+        .s2 .caption{color:#555;font-size:.9rem;margin-top:.5rem}
+        .s2 .caption .note{color:#888;font-style:italic;margin-left:.3rem}
+        .s2 .table-wrap{overflow-x:auto;margin:1rem 0}
+        .s2 table.kv{width:100%;border-collapse:collapse}
+        .s2 table.kv th,.s2 table.kv td{padding:.8rem 1rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+        .s2 table.kv thead th{background:#0f2b57;color:#fff;font-weight:600}
+        .s2 table.kv tbody th{background:#f8fafc;width:18%;font-weight:600}
+        .s2 .bullets{margin:.8rem 0 0 1rem}
+        .s2 .bullets li{margin:.35rem 0}
+      </style>
 
 <!-- Slide 3 -->
 <div class="slide" id="s3">
