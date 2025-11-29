@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omnichannel Customer Segmentation Strategy | Data-Driven Marketing Investment Optimization</title>
+<style>
+* { margin: 0; padding: <h3>Scenario 2: Optimistic (12 Months)</h3>
+<table>
+<thead>
+<tr><th>Segment</th><th>Response Rate Change</th><th>Incremental Responders</th><th>Impact Index (thousand JPY)</th></tr>
+</thead>
+<tbody>
+<tr><td>C0</td><td>28.9% → 36.9% (+8.0pt)</td><td>50.2</td><td>55,069</td></tr>
+<tr><td>C3</td><td>10.6% → 18.6% (+8.0pt)</td><td>32.3</td><td>37,597</td></tr>
+<tr><td>C2</td><td>2.2% → 12.2% (+10.0pt)</td><td>59.7</td><td>9,493</td></tr>
+<tr><td><strong>Total</strong></td><td>-</td><td><strong>142.2</strong></td><td><strong>102,159</strong></td></tr>
+</tbody>
+</table>g: border-box; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.8; color: #333; background: #f5f5f5; }
+.container { max-width: 1200px; margin: 0 auto; background: white; }
+.slide { min-height: 100vh; padding: 60px 80px; page-break-after: always; }
+h1 { font-size: 2.5em; color: #003366; margin-bottom: 20px; border-bottom: 4px solid #003366; padding-bottom: 10px; }
+h2 { font-size: 2em; color: #003366; margin: 40px 0 20px; }
+h3 { font-size: 1.5em; color: #0066cc; margin: 30px 0 15px; }
+.meta { font-size: 0.9em; color: #666; margin-bottom: 40px; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9em; }
+th { background: #003366; color: white; padding: 12px; text-align: left; }
+td { padding: 10px; border-bottom: 1px solid #ddd; }
+tr:nth-child(even) { background: #f9f9f9; }
+.highlight { background: #ffffcc; font-weight: bold; }
+.critical { color: #cc0000; font-weight: bold; }
+.box { background: #f0f7ff; border-left: 4px solid #0066cc; padding: 20px; margin: 20px 0; }
+.risk { background: #fff5f5; border-left: 4px solid #cc0000; }
+.success { background: #f0fff0; border-left: 4px solid #00cc00; }
+ul, ol { margin-left: 30px; margin-bottom: 20px; }
+li { margin-bottom: 10px; }
+.chart { text-align: center; margin: 30px 0; }
+.chart img { max-width: 100%; height: auto; border: 1px solid #ddd; }
+.nav { position: fixed; top: 20px; right: 20px; background: rgba(0,51,102,0.9); padding: 10px; border-radius: 5px; }
+.nav a { color: white; text-decoration: none; display: block; padding: 5px 10px; margin: 5px 0; }
+.nav a:hover { background: rgba(255,255,255,0.2); }
+.disclaimer { font-size: 0.85em; color: #666; background: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 30px; }
+.formula { background: #f5f5f5; padding: 10px; border-radius: 3px; font-family: 'Courier New', monospace; margin: 10px 0; }
+@media print { .slide { page-break-after: always; } .nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="nav">
+<a href="#s1">Overview</a>
+<a href="#s2">Analysis</a>
+<a href="#s3">Proposal</a>
+<a href="#s4">Financial</a>
+<a href="#s5">Execution</a>
+<a href="#s6">Risk</a>
+</div>
+
+<div class="container">
+
+<!-- Slide 1 -->
+<div class="slide" id="s1">
+<h1>Omnichannel Customer Segmentation Strategy</h1>
+<p style="font-size:1.3em; color:#0066cc; margin-bottom:30px;">Data-Driven Marketing Investment Optimization | Executive Proposal</p>
+
+<div class="box" style="background:#fff9e6; border-left:4px solid #ff9800; margin-bottom:30px;">
+<strong>📌 Proposal Positioning</strong><br>
+This proposal constitutes a Proof of Concept based on an educational marketing dataset (2,205 customers) distributed in a Python data analysis course and republished by the author on Kaggle. The analysis is fully reproducible via Jupyter Notebook and has been restructured as a professional executive proposal from a consultant to executive leadership.
+</div>
+
+<div class="meta">
+<strong>Proposal Date</strong>: November 26, 2025<br>
+<strong>Data Source</strong>: Customer marketing data distributed as coursework in a Python data analysis program (educational dataset republished by author on Kaggle)<br>
+<strong>Analysis Period</strong>: September 2012 – June 2014 (24 months)<br>
+<strong>Analysis Scope</strong>: 2,205 customers (post-exclusion of missing values and outliers from original 2,240 records)<br>
+<strong>Methodology</strong>: Unsupervised learning (Hierarchical Clustering, Ward's method, k=4)<br>
+<strong>Currency Unit</strong>: Thousand yen (e.g., 28,604 = ¥28.6 million)<br>
+<strong>Reproducibility</strong>: Complete (Python Jupyter Notebook, SEED=42 fixed, all code published on Kaggle/GitHub)
+</div>
+
+<h2>Executive Summary | Core Insights in 3 Minutes</h2>
+
+<p style="font-size:0.9em; color:#666; font-style:italic; margin-bottom:20px;">
+<strong>Note</strong>: All monetary figures in tables below are shown in <strong>thousand yen</strong>, unless otherwise noted.
+</p>
+
+<h3>Current State: Extreme Portfolio Concentration</h3>
+
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Customer Count</th>
+<th>% of Total</th>
+<th>Total Revenue (thousand JPY)</th>
+<th>Revenue %</th>
+<th>Value Index</th>
+<th>Response Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="highlight">
+<td><strong>C0: High-Value × High-Response</strong></td>
+<td>627</td>
+<td>28.4%</td>
+<td>687,872</td>
+<td><strong>51.4%</strong></td>
+<td>1.81</td>
+<td>28.9%</td>
+</tr>
+<tr class="highlight">
+<td><strong>C3: High-Value × Low-Response</strong></td>
+<td>404</td>
+<td>18.3%</td>
+<td>470,086</td>
+<td><strong>35.1%</strong></td>
+<td>1.92</td>
+<td>10.6%</td>
+</tr>
+<tr>
+<td>C1: Growth Potential Segment</td>
+<td>577</td>
+<td>26.2%</td>
+<td>85,256</td>
+<td>6.4%</td>
+<td>0.24</td>
+<td>16.6%</td>
+</tr>
+<tr>
+<td>C2: Volume-Base Segment</td>
+<td>597</td>
+<td>27.1%</td>
+<td>94,828</td>
+<td>7.1%</td>
+<td>0.26</td>
+<td>2.2%</td>
+</tr>
+</tbody>
+</table>
+
+<div class="box">
+<strong>Structural Challenges</strong>
+<ul>
+<li><span class="critical">46.7% of customers generate 86.5% of revenue</span> → C0+C3 are the de facto revenue engine</li>
+<li>Remaining 53.3% contribute only 13.5% of revenue → Severely low ROI</li>
+<li>High-value segment (C3) exhibits low response rate (10.6%) → Campaign approach misalignment</li>
+</ul>
+<p><strong>Implication</strong>: If current marketing budget allocation is not proportional to customer value, <span class="critical">30–40% of annual marketing investment is likely flowing to inefficient segments</span>.</p>
+</div>
+
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="s2">
+<h2>Data Foundation | Transparency and Reproducibility</h2>
+
+<div class="chart">
+<p><strong>Figure 1: Correlation Matrix of Key Metrics (Total_Spend, Income, Purchase Frequency, Campaign Response)</strong></p>
+<img src="assets/img/Cell4.jpg" alt="Figure 1: Correlation Matrix" style="max-width:100%; border:1px solid #ccc; margin:16px 0;">
+<p style="color:#999; font-size:0.85em; font-style:italic;">Source: Jupyter Notebook Cell 4 output | Reproduce via: plt.savefig('correlation_matrix.png')</p>
+</div>
+
+<h3>Data Overview</h3>
+<table>
+<tr><th>Item</th><th>Details</th></tr>
+<tr><td>Raw Data</td><td>2,240 rows × 29 columns</td></tr>
+<tr><td>Post Missing-Value Treatment</td><td>2,216 rows (1.1% missing rate)</td></tr>
+<tr><td>Post Outlier Exclusion</td><td>2,205 rows (final analysis scope)</td></tr>
+<tr><td>Key Variables</td><td>Age, income, purchase amounts (6 categories), channel-specific purchase frequency, web visits, campaign responses (6 campaigns)</td></tr>
+</table>
+
+<h3>Rationale for Cluster Count Selection</h3>
+<div class="chart">
+<p><strong>Figure 2: Quantitative Basis for Cluster Count Decision (Elbow SSE, Silhouette Score, k=4 Cluster Sizes)</strong></p>
+<img src="assets/img/Cell7.jpg" alt="Figure 2: Cluster Count Decision" style="max-width:100%; border:1px solid #ccc; margin:16px 0;">
+<p style="color:#999; font-size:0.85em; font-style:italic;">Source: Jupyter Notebook Cell 7 output | Rationale for k=4: SSE plateau + business interpretability</p>
+</div>
+
+<ul>
+<li><strong>Elbow Method</strong>: SSE reduction plateaus at k=3–5</li>
+<li><strong>Silhouette Method</strong>: k=4 yields silhouette score of 0.15 (superior interpretability trade-off)</li>
+<li><strong>Business Interpretation</strong>: 4 segments align with 2×2 "Value × Response" matrix</li>
+</ul>
+
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="s3">
+<h2>Segment Characteristics | Quantitative Profiles of Four Customer Tiers</h2>
+
+<div class="disclaimer" style="margin-bottom:20px;">
+<strong>📊 Data Provenance</strong>: All percentages and metrics below are empirically measured values from this dataset (2,205 customers), computed via Jupyter Notebook analysis. Segment composition, revenue share, and response rates are facts directly derived from clustering results.
+</div>
+
+<div class="chart">
+<p><strong>Figure 3: Customer Attributes by Segment (Age, Income, Family Composition, Recency, etc.)</strong></p>
+<img src="assets/img/Cell8.jpg" alt="Figure 3: Customer Attributes by Segment" style="max-width:100%; border:1px solid #ccc; margin:16px 0;">
+<p style="color:#999; font-size:0.85em; font-style:italic;">Source: Jupyter Notebook Cell 8 (Customer attributes by cluster)</p>
+</div>
+
+<h3>C0: High-Value × High-Response (VIP/Loyal Customers)</h3>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Customer Count</td><td>627 (28.4%)</td></tr>
+<tr><td>Avg. Spend (thousand JPY)</td><td>1,097</td></tr>
+<tr><td>Avg. Income (thousand JPY)</td><td>68,397</td></tr>
+<tr><td>Response Rate</td><td>28.9%</td></tr>
+<tr><td>Primary Channels</td><td>In-store (8.27×/year), Web (5.68×/year)</td></tr>
+<tr><td>Primary Categories (thousand JPY)</td><td>Wine (552), Meat (309)</td></tr>
+</table>
+
+<div class="box success">
+<strong>Strategy</strong>: VIP loyalty program, early access, referral incentives
+</div>
+
+<h3>C3: High-Value × Low-Response (Quiet Premium Customers)</h3>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Customer Count</td><td>404 (18.3%)</td></tr>
+<tr><td>Avg. Spend (thousand JPY)</td><td>1,164</td></tr>
+<tr><td>Avg. Income (thousand JPY)</td><td>68,399</td></tr>
+<tr><td>Response Rate</td><td>10.6%</td></tr>
+<tr><td>Recency (Days Since Last Purchase)</td><td>74.9 days (vs. C0's 29.9 days)</td></tr>
+</table>
+
+<div class="box success">
+<strong>Strategy</strong>: Experience-based initiatives (exclusive events), non-price appeals, personalized follow-up
+</div>
+
+<h3>C2: Volume-Base Segment (Digital Engagement Opportunity)</h3>
+<table>
+<tr><td>Web Visit Frequency</td><td>6.02×/month (higher than C0's 4.08×)</td></tr>
+<tr><td>Meat Category Gap</td><td>-6.9pt vs. high-value tiers</td></tr>
+</table>
+
+<div class="box">
+<strong>Strategy</strong>: Digital nurture program (3-stage email sequence), meat category trial campaigns<br>
+<strong>Pilot Scale</strong>: 200 of 597 customers (sample size requires separate statistical power analysis)
+</div>
+
+<h3>C1: Growth Potential Segment (Automation Target)</h3>
+<div class="box risk">
+<strong>Strategy</strong>: Withdraw from high-cost initiatives, newsletter-only approach (monthly automated)<br>
+<strong>Positioning</strong>: Maintain low-cost touchpoints, promote to C2 only upon behavioral change
+</div>
+
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" id="s4">
+<h2>Financial Impact Modeling | ROI Scenarios Based on Empirical Data</h2>
+
+<h3>Base Assumptions (All Empirically Measured)</h3>
+<table>
+<thead>
+<tr><th>Metric</th><th>C0</th><th>C3</th><th>C2</th><th>C1</th></tr>
+</thead>
+<tbody>
+<tr><td>Customer Count</td><td>627</td><td>404</td><td>597</td><td>577</td></tr>
+<tr><td>Avg. Spend (thousand JPY)</td><td>1,097</td><td>1,164</td><td>159</td><td>148</td></tr>
+<tr><td>Current Response Rate</td><td>28.9%</td><td>10.6%</td><td>2.2%</td><td>16.6%</td></tr>
+</tbody>
+</table>
+
+<h3>Scenario 1: Conservative (6 Months)</h3>
+<table>
+<thead>
+<tr><th>Segment</th><th>Response Rate Change</th><th>Incremental Responders</th><th>Impact Index (thousand JPY)</th></tr>
+</thead>
+<tbody>
+<tr><td>C0</td><td>28.9% → 33.9% (+5.0pt)</td><td>31.3</td><td><strong>34,394</strong></td></tr>
+<tr><td>C3</td><td>10.6% → 15.6% (+5.0pt)</td><td>20.2</td><td><strong>23,504</strong></td></tr>
+<tr><td><strong>Total</strong></td><td>-</td><td><strong>51.5</strong></td><td><strong>57,898</strong></td></tr>
+</tbody>
+</table>
+
+<div class="formula">
+Impact Index = Incremental Responders × Segment Avg. Spend<br>
+Example: C0 = 31.3 × 1,097 = 34,394
+</div>
+
+<div class="box">
+<strong>Conservative Financial Impact (6 Months)</strong><br>
+Revenue Increase: 57,898 (thousand JPY) × 80% (conversion rate) = <strong>≈ ¥46.3 million</strong><br>
+Gross Margin Increase: 46,318 (thousand JPY) × 35% (GM%) = <strong>≈ ¥16.2 million</strong>
+</div>
+
+<h3>Scenario 2: Optimistic (12 Months)</h3>
+<table>
+<thead>
+<tr><th>Segment</th><th>Response Rate Change</th><th>Incremental Responders</th><th>Impact Index (thousand JPY)</th></tr>
+</thead>
+<tbody>
+<tr><td>C0</td><td>28.9% → 36.9% (+8.0pt)</td><td>50.2</td><td>55,069</td></tr>
+<tr><td>C3</td><td>10.6% → 18.6% (+8.0pt)</td><td>32.3</td><td>37,597</td></tr>
+<tr><td>C2</td><td>2.2% → 12.2% (+10.0pt)</td><td>59.7</td><td>9,493</td></tr>
+<tr><td><strong>Total</strong></td><td>-</td><td><strong>142.2</strong></td><td><strong>102,159</strong></td></tr>
+</tbody>
+</table>
+
+<div class="box success">
+<strong>Optimistic Financial Impact (12 Months)</strong><br>
+Revenue Impact Index: <strong>102,159 (thousand JPY)</strong> (sum of incremental responders × avg. spend)<br>
+Projected Revenue Increase: 102,159 (thousand JPY) × 80% (conversion rate) = <strong>≈ ¥81.7 million</strong><br>
+Projected GM Increase: 81,727 (thousand JPY) × 35% (GM%) = <strong>≈ ¥28.6 million</strong>
+</div>
+
+<div class="disclaimer">
+<strong>⚠️ Critical Assumptions (Mandatory Reading)</strong>: The impact index and financial figures above are <strong>indicative estimates</strong> based on this dataset (2,205 customers, total revenue 1,338,042). GM% of 35% and purchase conversion rate of 80% are hypothetical values informed by general retail industry medians. <strong>Real-world application mandates recalculation with your organization's actual P&L and funnel data</strong>. This modeling serves directional validation purposes.
+</div>
+
+<h3>Required Investment (Year 1)</h3>
+<table>
+<tr><th>Item</th><th>Amount (Estimate)</th></tr>
+<tr><td>CRM Segment Tagging Implementation</td><td>¥8–12 million</td></tr>
+<tr><td>MA Integration Setup</td><td>¥3–5 million</td></tr>
+<tr><td>Campaign Execution Costs (6 months)</td><td>¥12 million</td></tr>
+<tr><td><strong>Total Year 1 Investment</strong></td><td><strong>¥23–29 million</strong></td></tr>
+</table>
+
+<h3>ROI Calculation (Optimistic Scenario, 12 Months)</h3>
+<table>
+<tr><td>Projected GM Increase</td><td>28,604 (thousand JPY) = <strong>¥28.6 million</strong></td></tr>
+<tr><td>Total Investment (12 months)</td><td>¥38 million (initial ¥26M + H2 ¥12M)</td></tr>
+<tr><td><strong>Year 1 ROI</strong></td><td class="critical"><strong>-24.7%</strong> (recovery shortfall)</td></tr>
+<tr><td><strong>Year 2+ ROI</strong></td><td class="highlight"><strong>+100%+ projected</strong> (no system reinvestment)</td></tr>
+</table>
+
+<div class="box" style="background:#fff3e0; border-left:4px solid #ff9800;">
+<strong>💡 Why Year 1 ROI is Negative</strong><br>
+This model positions Year 1 as an <strong>experimental investment phase</strong> encompassing:
+<ul style="margin:10px 0 0 20px;">
+<li>Segmentation infrastructure build (CRM/MA system modifications)</li>
+<li>Pilot campaign design and creative development</li>
+<li>Effectiveness validation and organizational learning costs</li>
+</ul>
+The essence of this proposal is <strong>"validating customer segmentation strategy efficacy to establish sustainable competitive advantage from Year 2 onward"</strong>. This is a strategic investment in long-term customer value maximization, not a short-term ROI play.
+</div>
+
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" id="s5">
+<h2>Execution Roadmap | Deliver Results in 12 Weeks</h2>
+
+<h3>Phase 1: Infrastructure Build (Week 1-4)</h3>
+<table>
+<thead><tr><th>Task</th><th>Responsible Function</th><th>Deliverable</th><th>Completion Criteria</th></tr></thead>
+<tbody>
+<tr><td>Segment Definition Approval</td><td>Marketing, IT, Corp Planning</td><td>Definition v1.0</td><td>Executive committee approval</td></tr>
+<tr><td>CRM Tag Implementation</td><td>IT</td><td>All customers tagged</td><td>100% tag coverage</td></tr>
+<tr><td>MA Integration Testing</td><td>Marketing, IT</td><td>Test deployment success</td><td>4-segment differential confirmed</td></tr>
+<tr><td>Existing Campaign Inventory</td><td>Marketing</td><td>ROI matrix</td><td>Full campaign visibility</td></tr>
+</tbody>
+</table>
+
+<h3>Phase 2: Pilot Campaigns (Week 5-8)</h3>
+<table>
+<thead><tr><th>Initiative</th><th>Target</th><th>Budget</th><th>KPI</th></tr></thead>
+<tbody>
+<tr><td>VIP Early Access</td><td>C0 (627)</td><td>¥1M</td><td>Response rate +2pt</td></tr>
+<tr><td>Exclusive Tasting Event</td><td>C3 (50)</td><td>¥0.5M</td><td>40% purchase conversion</td></tr>
+<tr><td>Nurture Email Series</td><td>C2 (200)</td><td>¥0.3M</td><td>Response rate +1pt</td></tr>
+</tbody>
+</table>
+
+<div class="box risk">
+<strong>Week 8 Go/No-Go Criteria</strong>
+<ul>
+<li>C0 initiative: Response rate +2pt not met → terminate</li>
+<li>C3 initiative: Participation rate <20% → terminate</li>
+<li>C2 initiative: Response rate +0.5pt not met → terminate</li>
+</ul>
+</div>
+
+<h3>Phase 3: Validation and Scale-Up (Week 9-12)</h3>
+<ul>
+<li>Segment-specific ROI calculation</li>
+<li>Executive committee report (full deployment vs. withdrawal decision)</li>
+<li>FY+1 budget allocation proposal</li>
+</ul>
+
+<div class="box success">
+<strong>Success Definition (Week 12)</strong>
+<ol>
+<li>C0+C3 response rates improve with statistical significance (p<0.05)</li>
+<li>At least 1 initiative achieves ROI>120%</li>
+<li>C1-targeted costs reduced by 30% YoY</li>
+</ol>
+</div>
+
+</div>
+
+<!-- Slide 6 -->
+<div class="slide" id="s6">
+<h2>Risk Analysis and Mitigation</h2>
+
+<h3>Risk 1: Technical Implementation Delay</h3>
+<table>
+<tr><th>Factor</th><th>Details</th></tr>
+<tr><td>Probability</td><td>30%</td></tr>
+<tr><td>Impact</td><td>High (2–4 week timeline slip)</td></tr>
+<tr><td>Mitigation</td><td>Week 1 kickoff with explicit requirements documentation, Week 2 interim review, fallback to customer ID list-based execution</td></tr>
+</table>
+
+<h3>Risk 2: C3 Response Rate Fails to Improve</h3>
+<table>
+<tr><td>Probability</td><td>40%</td></tr>
+<tr><td>Impact</td><td>Medium (ROI shortfall, but C0 compensates)</td></tr>
+<tr><td>Mitigation</td><td>Week 5-8 parallel testing of multiple approaches, immediate termination of low-performing tactics, budget reallocation to C0</td></tr>
+</table>
+
+<h3>Risk 3: C2 Initiative ROI<100%</h3>
+<table>
+<tr><td>Probability</td><td>50%</td></tr>
+<tr><td>Impact</td><td>Low (<10% of total budget)</td></tr>
+<tr><td>Mitigation</td><td>Immediate termination at Week 8 if response rate +0.5pt not achieved, capture learnings for FY+1</td></tr>
+</table>
+
+<h3>Risk 4: Organizational Resistance (Sales Function)</h3>
+<table>
+<tr><td>Probability</td><td>30%</td></tr>
+<tr><td>Impact</td><td>High (execution stagnation)</td></tr>
+<tr><td>Mitigation</td><td>Week 1 sales leadership buy-in, reallocate C1 cost savings to sales incentive pool, Week 8 results presentation at sales meeting</td></tr>
+</table>
+
+<h3>Risk 5: Data Privacy / Consumer Protection Law Violation</h3>
+<table>
+<tr><td>Probability</td><td>10%</td></tr>
+<tr><td>Impact</td><td>Critical (full campaign suspension)</td></tr>
+<tr><td>Mitigation</td><td>Week 1 legal review, position initiatives as "preference-based personalization," explicit opt-out in all campaigns. Ensure compliance with Japan's APPI (Act on the Protection of Personal Information) and Act on Specified Commercial Transactions.</td></tr>
+</table>
+
+</div>
+
+<!-- Slide 7 -->
+<div class="slide">
+<h2>Decision Options</h2>
+
+<h3>Option A: Full-Scope Implementation (Recommended)</h3>
+<table>
+<tr><th>Factor</th><th>Details</th></tr>
+<tr><td>Investment</td><td>¥38 million (12 months)</td></tr>
+<tr><td>Expected Return</td><td>GM increase ¥28.6 million</td></tr>
+<tr><td>ROI</td><td>-24.7% (Year 1), Year 2+ >100%</td></tr>
+<tr><td>Advantages</td><td>Segment-based marketing infrastructure, continuous improvement from Year 2</td></tr>
+<tr><td>Disadvantages</td><td>Year 1 investment-heavy, requires cross-functional coordination (IT, Marketing, Sales)</td></tr>
+</table>
+
+<h3>Option B: Pilot Implementation (Risk-Averse)</h3>
+<table>
+<tr><td>Investment</td><td>¥11 million (8 weeks)</td></tr>
+<tr><td>Expected Return</td><td>GM increase ¥9.6 million</td></tr>
+<tr><td>ROI</td><td>-12.5% (8-week mark)</td></tr>
+<tr><td>Advantages</td><td>Lower investment, high C0 success probability, Week 8 withdrawal option</td></tr>
+<tr><td>Disadvantages</td><td>C3/C2 opportunity loss, system scalability constraints</td></tr>
+</table>
+
+<h3>Option C: Status Quo (Not Recommended)</h3>
+<table>
+<tr><td>Investment</td><td>¥0</td></tr>
+<tr><td>Return</td><td>¥0</td></tr>
+<tr><td>Disadvantages</td><td class="critical">Opportunity cost 102,159, competitive disadvantage if rivals move first, continued inefficient C1 investment</td></tr>
+</table>
+
+<div class="box success">
+<h3>Recommendation</h3>
+<p><strong>Decisions Required at Today's Executive Committee Meeting</strong></p>
+<ol>
+<li><strong>Adopt Option A (Full-Scope)</strong> → Competitive advantage construction in 2 years</li>
+<li>Mandate executive reviews at Week 4, 8, 12</li>
+<li>Approve ¥26 million budget (funding sources: C1 reduction ¥8M + existing reallocation ¥10M + incremental ¥8M)</li>
+<li>Approve execution structure (Owner: CMO, Lead: Marketing Director)</li>
+</ol>
+</div>
+
+</div>
+
+<!-- Slide 8 -->
+<div class="slide">
+<h2>Data Transparency and Constraints</h2>
+
+<div class="box success">
+<strong>🔗 Reproducibility Guarantee</strong><br>
+All aggregate values, segment compositions, and KPI metrics cited in this proposal are <strong>fully reproducible via a separately available Jupyter Notebook (customer segmentation analysis)</strong>. All analysis processes, code, and outputs are maintained in a state enabling third-party verification.
+</div>
+
+<div class="box" style="background:#f5f5f5; border-left:4px solid #666; margin-top:20px;">
+<strong>📚 Dataset Provenance</strong><br>
+The dataset employed in this analysis consists of marketing data distributed as coursework in an educational Python data analysis program, republished by the author on Kaggle. It contains no personally identifiable information or real company names, being fully anonymized for educational purposes.
+</div>
+
+<h3>Facts Without Assumptions (Notebook Empirical Values)</h3>
+<ul>
+<li>✅ Segment definitions (C0–C3): Actual clustering results from data (Ward's method, k=4)</li>
+<li>✅ Customer counts, revenue, response rates: Empirically measured via Notebook aggregation</li>
+<li>✅ Average spend: Segment-specific empirical means (C0=1,097, C3=1,164, C2=159, C1=148)</li>
+<li>✅ Category composition, channel usage: Empirical values from Notebook Cell 11 aggregation</li>
+<li>✅ Cluster count rationale: Quantitative analysis results (Elbow/Silhouette methods)</li>
+</ul>
+
+<h3>Elements Containing Assumptions</h3>
+<div class="box risk">
+<p><strong>[Requires Substitution]</strong> The following values must be replaced with your organization's actual data upon real-world application</p>
+<ul>
+<li>⚠️ <strong>Impact Index</strong>: Scenario-defined "incremental responders" (assumed response rate improvement) × empirical avg. spend = indicative value</li>
+<li>❌ GM% 35% → <strong>[Substitute: Your P&L actual GM%]</strong></li>
+<li>❌ Purchase conversion rate 80% → <strong>[Substitute: Your funnel data actual conversion rate]</strong></li>
+<li>❌ System investment ¥11–17M → <strong>[Substitute: IT department actual quote]</strong></li>
+</ul>
+</div>
+
+<h3>Data Limitations</h3>
+<table>
+<tr><th>Dimension</th><th>Feasible with Current Data</th><th>Infeasible with Current Data</th></tr>
+<tr><td>Segmentation</td><td>✅ 4-segment classification</td><td>❌ LTV (24-month observation only)</td></tr>
+<tr><td>Purchase Patterns</td><td>✅ Category/channel analysis</td><td>❌ Long-term churn trend</td></tr>
+<tr><td>Impact Modeling</td><td>✅ Short-term response improvement</td><td>❌ Causal effect of initiatives (no experimental data)</td></tr>
+</table>
+
+<h3>Additional Data Required for Real-World Application</h3>
+<ol>
+<li>Category-specific GM%, marketing initiative cost actuals</li>
+<li>Minimum 3 years of purchase history (for LTV)</li>
+<li>A/B test results (for causal inference)</li>
+<li>Competitive initiative landscape, market trends</li>
+</ol>
+
+</div>
+
+<!-- Slide 9 -->
+<div class="slide">
+<h2>Complete Methodological Reproducibility</h2>
+
+<h3>Tools Used</h3>
+<ul>
+<li>Python 3.x, Jupyter Notebook</li>
+<li>Libraries: pandas, numpy, scikit-learn, matplotlib, seaborn</li>
+<li>Random seed: 42 (fixed)</li>
+<li>Clustering: Hierarchical clustering (Ward's method), k=4</li>
+</ul>
+
+<h3>Reproduction Steps</h3>
+<ol>
+<li>Data loading (marketing_campaign.csv)</li>
+<li>Feature engineering (derived variables: age, customer tenure, total spend, etc.)</li>
+<li>Preprocessing (missing value deletion: 24 rows, IQR outlier exclusion: 11 rows)</li>
+<li>MinMax scaling ([0,1] normalization)</li>
+<li>Cluster count determination (Elbow/Silhouette methods select k=4)</li>
+<li>Clustering execution (Ward's method)</li>
+<li>Segment-specific KPI calculation</li>
+</ol>
+
+<div class="box">
+<p><strong>Verification Capability</strong>: Notebook file available (full code + all outputs). Any third party can reproduce identical results with the same dataset.</p>
+</div>
+
+<h3>Cluster Count (k=4) Selection Rationale</h3>
+<table>
+<tr><th>Method</th><th>Result</th></tr>
+<tr><td>Elbow Method</td><td>SSE reduction plateaus at k=3–5</td></tr>
+<tr><td>Silhouette Method</td><td>k=4 yields score 0.15 (lower than k=2's 0.26, but superior interpretability)</td></tr>
+<tr><td>Business Interpretation</td><td>4 segments align with "Value × Response" 2×2 matrix</td></tr>
+</table>
+
+</div>
+
+<!-- Slide 10 -->
+<div class="slide">
+<h2>Conclusion | First Step Toward Data-Driven Management</h2>
+
+<div class="box success" style="font-size:1.1em;">
+<p><strong>Essence of This Proposal</strong></p>
+<ul>
+<li>Transformation from <strong>"knowing customers"</strong> to <strong>"optimizing per customer"</strong></li>
+<li>Establishing a <strong>reproducible decision-making process</strong> grounded in objective data evidence</li>
+<li>Investment in <strong>sustainable competitive advantage 2–3 years out</strong>, not short-term ROI</li>
+</ul>
+</div>
+
+<h3>Next Steps</h3>
+<ol style="font-size:1.1em;">
+<li><strong>Today's Executive Committee</strong>: Decide Option A or B</li>
+<li><strong>Week 1</strong>: Kickoff (finalize execution structure, budget, schedule)</li>
+<li><strong>Week 4</strong>: Segmentation implementation complete</li>
+<li><strong>Week 8</strong>: Pilot effectiveness validation</li>
+<li><strong>Week 12</strong>: Final go/no-go decision for full deployment</li>
+</ol>
+
+<div style="margin-top:60px; padding-top:30px; border-top:2px solid #003366;">
+<p><strong>Proposal Lead</strong>: <span class="critical">[Substitute: Proposer Name]</span><br>
+<strong>Approver</strong>: <span class="critical">[Substitute: Approver Name]</span><br>
+<strong>Proposal Date</strong>: November 26, 2025</p>
+
+<p style="margin-top:20px;"><strong>📂 Related Resources</strong>:</p>
+<ul>
+<li>📊 <strong>Jupyter Notebook (Full Analysis Reproduction)</strong>: <a href="https://www.kaggle.com/code/ayoyo2001/omnichannel-retail-customer-segmentation-insights" target="_blank" style="color:#0066cc;">View on Kaggle</a> | All aggregate values, charts, and segment definitions reproducible</li>
+<li>📈 <strong>Source Dataset (marketing_campaign.csv)</strong>: <a href="https://www.kaggle.com/datasets/ayoyo2001/omnichannel-retail-customer-campaign-data" target="_blank" style="color:#0066cc;">Download on Kaggle</a> | 2,205 fully anonymized customer records</li>
+<li>🔗 <strong>Proposal GitHub Repository</strong>: <a href="https://github.com/jpro100/omni-segmentation-proposal" target="_blank" style="color:#0066cc;">Source Code</a> | HTML and analysis script suite</li>
+</ul>
+
+<div class="disclaimer" style="margin-top:15px;">
+<strong>💡 Usage Guide</strong>: Open the Jupyter Notebook and click "Copy & Edit" to replicate in your environment. Execute all cells to reproduce identical results (runtime: ~2 minutes). Dataset auto-loads.
+</div>
+</div>
+
+</div>
+
+<script>
+// Simple navigation
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+  });
+});
+</script>
+
+</body>
+</html>
